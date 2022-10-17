@@ -1,0 +1,30 @@
+!Modo EXEC privilegiado
+enable
+
+    !Modo configuração Global
+    configure terminal
+
+    !configuração das line VTY (linhas virtuais)
+    line vty 0 4 
+
+      !habilitar o login local 
+      login local 
+
+      !sincronismo dos logs
+      logging synchronous
+
+      !habilitar o tempo de inatividade 
+      exec-timeout 5 30
+
+    !habilitar o protocolo de acesso 
+    transport imput ssh 
+
+    !sair do todos os modos 
+    end
+
+!salvar as configurações
+copy running-config startup-config
+write-wr
+
+!verificando as configurações ativas do router/switch
+show running config
